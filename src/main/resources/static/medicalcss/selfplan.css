@@ -1,0 +1,121 @@
+/* style.css */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+main {
+    padding: 2rem;
+    display: flex;
+    justify-content: center; /* Center the plans */
+    align-items: flex-start; /* Align cards to the top */
+    min-height: calc(100vh - 150px); /* Ensure content takes up full viewport height */
+}
+
+.plan-container {
+    display: flex;
+    gap: 2rem; /* Spacing between cards */
+}
+
+
+.plan-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    text-align: center; /* Center content within card */
+    width: 300px; /* Fixed width for each card */
+}
+
+.plan-card img {
+    max-width: 100px; /* Ensure image fits within card */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.coverage-details, .premium-details {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.premium-options {
+    display: flex;
+    justify-content: space-around; /* Distribute self/family options */
+    align-items: center;
+}
+
+.option {
+    display: flex;
+    flex-direction: column; /* Stack image and price vertically */
+    align-items: center;
+}
+
+.option img {
+    max-width: 50px;
+    height: auto;
+    margin-bottom: 5px;
+}
+
+/* selfplan.css */
+/* ... (Your existing CSS) ... */
+
+/* Styles for the "Check Plan Details" button */
+.plan-card button {
+    background-color: #007bff; /* Blue */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.plan-card button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Other CSS styles (from previous examples) ... */
+
+
+.plan-card h2 {
+    margin-bottom: 10px;
+}
+
+.plan-card button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.plan-card button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    position: relative; /* Ensure footer stays at the bottom */
+    width: 100%;
+}

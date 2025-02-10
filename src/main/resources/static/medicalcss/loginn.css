@@ -1,0 +1,144 @@
+/* Basic Styles (as before) */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+/* Header Styles (UPDATED) */
+header {
+    background-color: #007bff; /* Blue header */
+    color: white;
+    padding: 1rem; /* Consistent padding */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /* Distribute space between logo and nav */
+}
+
+header h1 {
+    font-size: 1.5rem; /* Slightly smaller heading */
+    margin: 0; /* Remove default heading margins */
+}
+
+/* Navigation Styles (UPDATED) */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Horizontal menu */
+}
+
+nav li {
+    margin: 0 0.5rem; /* Smaller space between items */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #0056b3;
+}
+
+/* Active Link Styling (Optional) */
+nav a.active {
+    background-color: #0056b3;
+}
+
+/* ... rest of your CSS ... */
+
+/* styles.css */
+
+/* Basic styles */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa; /* Light gray background */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure footer sticks to bottom */
+}
+
+/* Auth Container Styles */
+.auth-container {
+    width: 400px; /* Adjust as needed */
+    margin: 50px auto; /* Center the container */
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styles */
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007bff; /* Blue heading */
+}
+
+.auth-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.auth-container input[type="text"],
+.auth-container input[type="email"],
+.auth-container input[type="password"] {
+    width: calc(100% - 12px); /* Full width with padding/border accounted for */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px; /* Add space below inputs */
+}
+
+.auth-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.auth-container button:hover {
+    background-color: #0056b3;
+}
+
+.auth-container p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.auth-container a {
+    color: #007bff; /* Blue link color */
+    text-decoration: none;
+}
+
+.auth-container a:hover {
+    text-decoration: underline;
+}
+
+/* Hide Register Form Initially */
+#register-form {
+    display: none;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto; /* Push footer to bottom */
+}

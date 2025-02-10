@@ -1,0 +1,1 @@
+console.log("Policies page loaded!"); // Just a test

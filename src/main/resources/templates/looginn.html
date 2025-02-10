@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Insurance Portal - Login</title>
+    <link rel="stylesheet" th:href="@{/medicalcss/loginn.css}"> </head>
+<body>
+    <img th:src="@{/images/loginbgimg.jpg}" style="position: absolute; width: 100%; height: 100%; z-index: -1;">
+    <header>
+        <h1>Medical Insurance Portal</h1>
+        <nav>
+            <ul>
+                <li><a href="/api/about">About</a></li>
+                <li><a href="/api/policies">Insurance Policies</a></li>
+                <li><a href="/api/claims">Claims</a></li>
+                <li><a href="/api/contact">Contact</a></li>
+                <li><a href="/api/login1">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="auth-container">
+        <div id="login-form">
+            <h2>Login</h2>
+            <form action="/api/custLogin" method="post" id="loginForm">
+                <label for="email-login">Email:</label>
+                <input type="email" id="email-login" name="email" placeholder="Enter your registered Email" required>
+                <label for="password-login">Password:</label>
+                <input type="password" id="password-login" name="password" placeholder="Enter your registered password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" id="show-register">Register here</a></p>
+        </div>
+        
+          <div id="register-form" style="display:none;">
+            <h2>Register</h2>
+            <form action="/api/custReg" method="post" id="registerForm">
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                <label for="email-register">Email:</label>
+                <input type="email" id="email-register" name="email" placeholder="Enter your registered Email" required>
+                <label for="password-register">Password:</label>
+                <input type="password" id="password-register" name="password" placeholder="Enter your registered password" required>
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="#" id="show-login">Login here</a></p>
+        </div> 
+        
+    </section>
+    <footer>
+        <p>Designed By Insurance </p>
+    </footer>
+    <script th:src="@{/Script/login.js}"></script>
+</body>
+</html>

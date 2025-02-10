@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Premium Plans</title>
+    <link rel="stylesheet" th:href="@{/medicalcss/selfplan.css}">
+</head>
+<body>
+    <header>
+        <h1>Individual Insurance Plans</h1>
+    </header>
+
+    <main>
+        <div class="selection-container">
+            <div class="gender-selection">
+                <label>Select Gender:</label><br>
+                <label for="male">
+                    <input type="radio" id="male" name="gender" value="male" checked>
+                    <img th:src="@{/Images/male.jpg}" alt="Male">
+                </label>
+                <label for="female">
+                    <input type="radio" id="female" name="gender" value="female">
+                    <img th:src="@{/Images/female.png}" alt="Female">
+                </label>
+            </div>
+
+            <div class="age-selection">
+                <label for="age">Enter Your Age:</label>
+                <input type="number" id="age" min="18" required>
+                <button onclick="filterPlans()">Show Plans</button>
+            </div>
+        </div>
+
+        <div class="plan-container">
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Insurance Company</p>
+    </footer>
+
+    <script th:src="@{/Script/self.js}"></script>
+</body>
+</html>
