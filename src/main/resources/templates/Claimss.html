@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Insurance Claims</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/medicalcss/claims.css}">
+</head>
+<body class="min-h-screen bg-gray-50">
+  <header class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-6">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <h1 class="text-2xl font-bold text-gray-900">Health Insurance Claims</h1>
+        </div>
+        <div class="flex gap-4">
+          <button onclick="showClaimType('individual')" class="px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg">Individual Claims</button>
+          <button onclick="showClaimType('family')" class="px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg">Family Claims</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <!-- Claim Type Selection -->
+    <div id="claim-type-section" class="mb-12">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold mb-4">Submit Your Insurance Claim</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Choose your claim type and follow the simple process to submit your health insurance claim.
+          Make sure you have all required documents ready before starting.
+        </p>
+      </div>
+    </div>
+
+    <!-- Individual Claim Section -->
+    <div id="individual-claim-section" class="claim-section">
+      <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <h3 class="text-2xl font-bold mb-6">Individual Claim Guidelines</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Required Documents</h4>
+            <ul class="list-disc pl-5 space-y-2 text-gray-600">
+              <li>Original hospital bills and receipts</li>
+              <li>Discharge summary from the hospital</li>
+              <li>Prescription and medical reports</li>
+              <li>Policy card or policy number</li>
+              <li>Government issued ID proof</li>
+              <li>Cancelled cheque for bank details</li>
+              <li>Claim form duly filled and signed</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Important Rules</h4>
+            <ul class="list-disc pl-5 space-y-2 text-gray-600">
+              <li>Claim must be filed within 30 days of discharge</li>
+              <li>Pre-authorization required for planned hospitalization</li>
+              <li>Minimum 24-hour hospitalization required</li>
+              <li>Original documents mandatory for reimbursement</li>
+              <li>Pre-existing diseases covered after waiting period</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <form id="individual-claim-form" class="bg-white rounded-lg shadow-lg p-8">
+        <h3 class="text-2xl font-bold mb-6">Individual Claim Form</h3>
+        <div class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium mb-1">Policy Number</label>
+              <input type="text" name="policyNumber" required class="w-full p-2 border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Date of Admission</label>
+              <input type="date" name="admissionDate" required class="w-full p-2 border rounded-lg">
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium mb-1">Hospital Name</label>
+              <input type="text" name="hospitalName" required class="w-full p-2 border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Treatment Type</label>
+              <select name="treatmentType" required class="w-full p-2 border rounded-lg">
+                <option value="">Select Treatment Type</option>
+                <option value="planned">Planned Hospitalization</option>
+                <option value="emergency">Emergency Hospitalization</option>
+                <option value="daycare">Day Care Procedure</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-1">Claim Amount (₹)</label>
+            <input type="number" name="claimAmount" required class="w-full p-2 border rounded-lg">
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-1">Diagnosis/Ailment</label>
+            <textarea name="diagnosis" required class="w-full p-2 border rounded-lg h-24"></textarea>
+          </div>
+
+          <div class="space-y-4">
+            <label class="block text-sm font-medium">Required Documents</label>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm text-gray-600 mb-1">Hospital Bills</label>
+                <input type="file" name="hospitalBills" required class="w-full">
+              </div>
+              <div>
+                <label class="block text-sm text-gray-600 mb-1">Discharge Summary</label>
+                <input type="file" name="dischargeSummary" required class="w-full">
+              </div>
+              <div>
+                <label class="block text-sm text-gray-600 mb-1">Medical Reports</label>
+                <input type="file" name="medicalReports" required class="w-full">
+              </div>
+              <div>
+                <label class="block text-sm text-gray-600 mb-1">ID Proof</label>
+                <input type="file" name="idProof" required class="w-full">
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+            Submit Claim
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Family Claim Section -->
+    <div id="family-claim-section" class="claim-section hidden">
+      <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <h3 class="text-2xl font-bold mb-6">Family Claim Guidelines</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Required Documents</h4>
+            <ul class="list-disc pl-5 space-y-2 text-gray-600">
+              <li>All documents required for individual claims</li>
+              <li>Proof of relationship with primary insured</li>
+              <li>Family member's ID proof</li>
+              <li>Primary insured's policy card</li>
+              <li>Family member's medical history</li>
+              <li>Previous claim history (if any)</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Additional Rules for Family Claims</h4>
+            <ul class="list-disc pl-5 space-y-2 text-gray-600">
+              <li>Only covered family members eligible for claims</li>
+              <li>Shared sum insured among family members</li>
+              <li>Age limit applies for dependent children</li>
+              <li>Parents/In-laws coverage as per policy</li>
+              <li>Family floater benefits applicable</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <form id="family-claim-form" class="bg-white rounded-lg shadow-lg p-8">
+        <h3 class="text-2xl font-bold mb-6">Family Claim Form</h3>
+        <div class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium mb-1">Policy Number</label>
+              <input type="text" name="policyNumber" required class="w-full p-2 border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Primary Insured Name</label>
+              <input type="text" name="primaryInsuredName" required class="w-full p-2 border rounded-lg">
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium mb-1">Patient Name</label>
+              <input type="text" name="patientName" required class="w-full p-2 border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Relationship with Primary Insured</label>
+              <select name="relationship" required class="w-full p-2 border rounded-lg">
+                <option value="">Select Relationship</option>
+                <option value="spouse">Spouse</option>
+                <option value="child">Child</option>
+                <option value="parent">Parent</option>
+                <option value="parent-in-law">Parent-in-law</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium mb-1">Hospital Name</label>
+              <input type="text" name="hospitalName" required class="w-full p-2 border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Date of Admission</label>
+              <input type="date" name="admissionDate" required class="w-full p-2 border rounded-lg">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-1">Claim Amount (₹)</label>
+            <input type="number" name="claimAmount" required class="w-full p-2 border rounded-lg">
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-1">Diagnosis/Ailment</label>
+            <textarea name="diagnosis" required class="w-full p-2 border rounded-lg h-24"></textarea>
+          </div>
+
+          <div class="space-y-4">
+            <label class="block text-sm font-medium">Required Documents</label>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm text-gray-600 mb-1">Hospital Bills</label>
+                <input type="file" name="hospitalBills" required class="w-full">
+              </div>
+              <div>
+                <label class="block text-sm text-gray-600 mb-1">Discharge Summary</label>
+                <input type="file" name="dischargeSummary" required class="w-full">
+              </div>
+              <div>
+                <label class="block text-sm text-gray-600 mb-1">Relationship Proof</label>
+                <input type="file" name="relationshipProof" required class="w-full">
+              </div>
+              <div>
+                <label class="block text-sm text-gray-600 mb-1">Patient ID Proof</label>
+                <input type="file" name="patientIdProof" required class="w-full">
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+            Submit Family Claim
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Success Message -->
+    <div id="success-message" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="bg-white p-8 rounded-lg max-w-md w-full mx-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-green-500 mx-auto mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <h2 class="text-2xl font-bold text-center mb-4">Claim Submitted Successfully!</h2>
+        <p class="text-gray-600 text-center mb-6">Your claim has been submitted successfully. You will receive a confirmation email with your claim reference number shortly.</p>
+        <button onclick="closeSuccessMessage()" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+          Close
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script th:src="@{/Script/Claims.js}"></script>
+</body>
+</html>

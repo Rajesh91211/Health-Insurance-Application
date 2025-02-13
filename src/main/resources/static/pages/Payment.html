@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="/medicalcss/payment.css"> 
+</head>
+<body>
+    <header>
+        <h1>Payment</h1>
+    </header>
+
+    <main>
+        <div class="payment-container">
+            <h2>Payment Details</h2>
+
+            <div id="summary">
+                <h3>Order Summary</h3>
+                <p><strong>Plan:</strong> <span id="planName"></span></p>
+                <p><strong>Premium:</strong> ₹<span id="premiumAmount"></span></p>
+                <p><strong>Name:</strong> <span id="customerName"></span></p>
+                <p><strong>Age:</strong> <span id="customerAge"></span></p>
+                <p><strong>Gender:</strong> <span id="customerGender"></span></p>
+                <p><strong>Email:</strong> <span id="customerEmail"></span></p>
+                <p><strong>Phone:</strong> <span id="customerPhone"></span></p>
+                <p><strong>Address:</strong> <span id="customerAddress"></span></p>
+            </div>
+            
+            
+            
+            <div class="payment-options">
+        <h3>Select Payment Method</h3>
+        <label>
+            <input type="radio" name="paymentMethod" value="creditcard"> Credit Card
+        </label>
+        <label>
+            <input type="radio" name="paymentMethod" value="debitcard"> Debit Card
+        </label>
+        <label>
+            <input type="radio" name="paymentMethod" value="upi"> UPI
+        </label>
+    </div>
+
+    <div id="detailsContainer">  </div>
+
+    <button id="payNowButton" onclick="processPayment()" class="btn" style="display: none;">Pay Now</button>
+            
+
+      <!--        <div class="payment-options">
+                <h3>Select Payment Method</h3>
+                <label>
+                    <input type="radio" name="paymentMethod" value="creditcard" checked> Credit Card
+                </label>
+                <label>
+                    <input type="radio" name="paymentMethod" value="debitcard"> Debit Card
+                </label>
+                <label>
+                    <input type="radio" name="paymentMethod" value="upi"> UPI
+                </label>
+                </div>
+
+            <div class="credit-card-details">
+                    <h3>Credit Card Details</h3>
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number:</label>
+                        <input type="text" id="cardNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expiry">Expiry:</label>
+                        <input type="month" id="expiry" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV:</label>
+                        <input type="number" id="cvv" required>
+                    </div>
+                </div>
+                
+                <div class="debit-card-details">
+                    <h3>Debit Card Details</h3>
+                    <div class="form-group">
+                        <label for="debitCardNumber">Card Number:</label>
+                        <input type="text" id="debitCardNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="debitExpiry">Expiry:</label>
+                        <input type="month" id="debitExpiry" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="debitCVV">CVV:</label>
+                        <input type="number" id="debitCVV" required>
+                    </div>
+                </div>
+           
+
+            <div class="upi-details">
+                <h3>UPI Options</h3>
+                <label>
+                    <input type="radio" name="upiOption" value="phonepay" checked> PhonePe
+                </label>
+                <label>
+                    <input type="radio" name="upiOption" value="googlepay"> Google Pay
+                </label>
+                <label>
+                    <input type="radio" name="upiOption" value="paytm"> Paytm
+                </label>
+                </div>
+
+            <button onclick="processPayment()" class="btn">Pay Now</button> -->
+            
+            
+            
+            
+            
+        </div>  
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Medical Insurance Portal</p>
+    </footer>
+
+    <script src="/Script/payment.js"></script>
+</body>
+</html>

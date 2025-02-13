@@ -1,0 +1,43 @@
+/* Additional styles beyond Tailwind */
+.hidden {
+  display: none !important;
+}
+
+.plan-card {
+  transition: transform 0.2s;
+}
+
+.plan-card:hover {
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Form focus styles */
+input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Button hover effect */
+button:hover {
+  transform: translateY(-1px);
+}
+
+#payNowButton {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

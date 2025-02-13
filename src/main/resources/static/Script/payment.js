@@ -1,23 +1,5 @@
-// payment.js (Place in src/main/resources/static/Script/)
-document.addEventListener('DOMContentLoaded', () => {
-    const insuranceFormData = JSON.parse(localStorage.getItem('insuranceFormData'));
 
-    if (insuranceFormData) {
-        document.getElementById('planName').textContent = insuranceFormData.planName; // Set plan name
-        document.getElementById('premiumAmount').textContent = insuranceFormData.premium; // Set premium
-        document.getElementById('customerName').textContent = insuranceFormData.name;
-        document.getElementById('customerAge').textContent = insuranceFormData.age;
-        document.getElementById('customerGender').textContent = insuranceFormData.gender;
-        document.getElementById('customerEmail').textContent = insuranceFormData.email;
-        document.getElementById('customerPhone').textContent = insuranceFormData.phone;
-        document.getElementById('customerAddress').textContent = insuranceFormData.address;
-    } else {
-        // Handle case where form data is not available (e.g., redirect or display a message)
-        alert("Insurance form data is missing. Please fill out the form first.");
-        window.location.href = document.referrer; // Redirect back to the previous page
-    }
-});
-
+/*
 function processPayment() {
     // Implement your payment processing logic here.
     // This is a placeholder; you'll need to integrate with a payment gateway.
@@ -37,4 +19,79 @@ function processPayment() {
 
     // Example placeholder:
     alert('Payment processed successfully (placeholder)!');
-}
+}*/
+
+
+
+// payment.js
+document.addEventListener('DOMContentLoaded', () => {
+    // ... (Existing code for summary population) ...
+
+    const paymentOptions = document.querySelectorAll('input[name="paymentMethod"]');
+    const detailsContainer = document.getElementById('detailsContainer');
+    const payNowButton = document.getElementById('payNowButton');
+
+    paymentOptions.forEach(option => {
+        option.addEventListener('change', () => {
+            detailsContainer.innerHTML = ''; // Clear previous details
+
+            if (option.value === 'creditcard') {
+                detailsContainer.innerHTML = `
+                    <div class="credit-card-details">
+                        <h3>Credit Card Details</h3>
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number:</label>
+                            <input type="text" id="cardNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expiry">Expiry:</label>
+                            <input type="month" id="expiry" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV:</label>
+                            <input type="number" id="cvv" required>
+                        </div>
+                    </div>
+                `;
+                payNowButton.style.display = 'block';
+            } else if (option.value === 'debitcard') {
+                detailsContainer.innerHTML = `
+                    <div class="debit-card-details">
+                        <h3>Debit Card Details</h3>
+                        <div class="form-group">
+                            <label for="debitCardNumber">Card Number:</label>
+                            <input type="text" id="debitCardNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="debitExpiry">Expiry:</label>
+                            <input type="month" id="debitExpiry" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="debitCVV">CVV:</label>
+                            <input type="number" id="debitCVV" required>
+                        </div>
+                    </div>
+                `;
+                payNowButton.style.display = 'block';
+            } else if (option.value === 'upi') {
+                detailsContainer.innerHTML = `
+                    <div class="upi-details">
+                        <h3>UPI Options</h3>
+                        <label>
+                            <input type="radio" name="upiOption" value="phonepay" checked> PhonePe
+                        </label>
+                        <label>
+                            <input type="radio" name="upiOption" value="googlepay"> Google Pay
+                        </label>
+                        <label>
+                            <input type="radio" name="upiOption" value="paytm"> Paytm
+                        </label>
+                    </div>
+                `;
+                payNowButton.style.display = 'block';
+            }
+        });
+    });
+
+    // ... (rest of the existing code) ...
+});

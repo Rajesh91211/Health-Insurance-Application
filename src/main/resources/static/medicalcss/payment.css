@@ -21,6 +21,16 @@ main {
     align-items: flex-start;
     min-height: calc(100vh - 150px);
 }
+/* payment.css */
+/* ... (Existing CSS) ... */
+
+#detailsContainer > div { /* Style immediate children of detailsContainer */
+    margin-bottom: 20px; /* Add spacing between details sections */
+}
+
+#payNowButton {
+    margin-top: 20px; /* Add some space above the button */
+}
 
 .payment-container {
     background-color: white;
