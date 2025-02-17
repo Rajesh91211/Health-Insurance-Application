@@ -18,10 +18,10 @@
           </svg>
           <h1 class="text-2xl font-bold text-gray-900">Health Insurance Claims</h1>
         </div>
-        <div class="flex gap-4">
+         <div class="flex gap-4">
           <button onclick="showClaimType('individual')" class="px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg">Individual Claims</button>
           <button onclick="showClaimType('family')" class="px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg">Family Claims</button>
-        </div>
+        </div>  
       </div>
     </div>
   </header>
@@ -68,47 +68,48 @@
         </div>
       </div>
 
-      <form id="individual-claim-form" class="bg-white rounded-lg shadow-lg p-8">
+      <form id="individual-claim-form" class="bg-white rounded-lg shadow-lg p-8" th:action="@{/api/submit}" method="post" enctype="multipart/form-data">
         <h3 class="text-2xl font-bold mb-6">Individual Claim Form</h3>
         <div class="space-y-6">
           <div class="grid md:grid-cols-2 gap-6">
             <div>
-              <label class="block text-sm font-medium mb-1">Policy Number</label>
-              <input type="text" name="policyNumber" required class="w-full p-2 border rounded-lg">
+              <label class="block text-sm font-medium mb-1">Claim ID</label>
+              <input type="text" name="claimId" id="claimId" required class="w-full p-2 border rounded-lg">
             </div>
             <div>
               <label class="block text-sm font-medium mb-1">Date of Admission</label>
-              <input type="date" name="admissionDate" required class="w-full p-2 border rounded-lg">
+              <input type="date" name="admissionDate" id="admissionDate" required class="w-full p-2 border rounded-lg">
             </div>
           </div>
 
           <div class="grid md:grid-cols-2 gap-6">
             <div>
               <label class="block text-sm font-medium mb-1">Hospital Name</label>
-              <input type="text" name="hospitalName" required class="w-full p-2 border rounded-lg">
+              <input type="text" name="hospitalName" id="hospitalName" required class="w-full p-2 border rounded-lg">
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1">Treatment Type</label>
-              <select name="treatmentType" required class="w-full p-2 border rounded-lg">
-                <option value="">Select Treatment Type</option>
-                <option value="planned">Planned Hospitalization</option>
-                <option value="emergency">Emergency Hospitalization</option>
-                <option value="daycare">Day Care Procedure</option>
-              </select>
-            </div>
-          </div>
-
-          <div>
             <label class="block text-sm font-medium mb-1">Claim Amount (₹)</label>
-            <input type="number" name="claimAmount" required class="w-full p-2 border rounded-lg">
+            <input type="number" name="claimAmount" id="claimAmount" required class="w-full p-2 border rounded-lg">
+          </div>
           </div>
 
+         
           <div>
             <label class="block text-sm font-medium mb-1">Diagnosis/Ailment</label>
-            <textarea name="diagnosis" required class="w-full p-2 border rounded-lg h-24"></textarea>
+            <textarea name="diagnosis" id="diagnosis" required class="w-full p-2 border rounded-lg h-24"></textarea>
           </div>
 
           <div class="space-y-4">
+          
+          <div>
+              <label class="block text-sm font-medium mb-1">Treatment Type</label>
+             <select id="treatmentType" name="treatmentType" required class="w-full p-2 border rounded-lg">
+                <option value="">Select Treatment Type</option>
+                <option value="INPATIENT">InPatient</option>
+                <option value="OUTPATIENT">OutPatient</option>
+              </select>
+            </div>
+            
             <label class="block text-sm font-medium">Required Documents</label>
             <div class="grid md:grid-cols-2 gap-4">
               <div>
@@ -171,7 +172,7 @@
         <div class="space-y-6">
           <div class="grid md:grid-cols-2 gap-6">
             <div>
-              <label class="block text-sm font-medium mb-1">Policy Number</label>
+              <label class="block text-sm font-medium mb-1">Claim ID</label>
               <input type="text" name="policyNumber" required class="w-full p-2 border rounded-lg">
             </div>
             <div>
@@ -219,7 +220,18 @@
           </div>
 
           <div class="space-y-4">
+          
+          <div>
+              <label class="block text-sm font-medium mb-1">Treatment Type</label>
+              <select name="treatmentType" required class="w-full p-2 border rounded-lg">
+                <option value="">Select Treatment Type</option>
+                <option value="IP">Inpatient</option>
+                <option value="OP">Outpatient</option>
+              </select>
+            </div>
+          
             <label class="block text-sm font-medium">Required Documents</label>
+            
             <div class="grid md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm text-gray-600 mb-1">Hospital Bills</label>
@@ -241,7 +253,7 @@
           </div>
 
           <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-            Submit Family Claim
+            Submit Claim
           </button>
         </div>
       </form>

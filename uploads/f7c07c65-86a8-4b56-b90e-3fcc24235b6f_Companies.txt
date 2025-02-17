@@ -1,0 +1,107 @@
+NTT DATA, --yes
+MIND TREE, --yes
+L&T TECHNOLOGIES, --yes
+BROAD RIDGE,
+QUALICUM,--yes
+NISSAN,
+PEPISCO.
+AMGEN,
+RPG LIFE SCIENCES,
+MODERONA,
+CARGIL,
+KPMG,  --yes
+E&Y,  --yes
+COCOCOLA,
+ZOMATO,
+OLA,
+SYNITI,
+BRAUN,
+PHLIPS,
+JK TECHNO SOFT
+FUJITSU,
+COMMON WELTH BANK, 
+BIT AND DICKISION,
+BAYER,  --yes
+OPTUM,
+TAKUDA,
+COPPER STANDARD,
+COLGATE,
+RENESASE,
+PNG,
+3M,
+AGILENT,
+AIRGAS,
+CTERPILLAR,
+CHUVRON,
+POEATON,
+EXXONMOBIL,
+FERRARACANDA,
+GILEADSCIENCE,
+MOSAIC,
+HP,
+PARKLAND,
+THUNDERBOLD,
+TOYATA,
+WESTROCK,
+DAIMLER,
+STRYKER,
+WARNER BROTHER,
+ZIMMER 
+BIOMAT,
+ADDIDAS,
+NIKE,
+MARSO
+OLOVA,
+SAMSUNG,
+HITACHE, --yes
+DIKIN, --yes
+CARREER,
+OGENERAL,
+WALDMART,
+SONY,
+ONIDA
+----------
+Alphabet--yes
+SalesForce--yes
+Apple--yes
+Hewlett-Packard --yes
+Amazon --yes
+VMware --yes
+Intel  --yes
+Microsoft --yes
+Intuit  --yes
+Adobe --yes
+Flipkart --yes
+Informatica --yes
+Cisco --yes
+McAfee --yes
+Uber --yes
+Meta --yes
+PayPal --yes
+Amdocs --yes
+Netflix --yes
+BMC --yes
+IBM --yes 
+SAP --yes
+Rockstar Games --yes
+Tejas Network
+Zoho --yes
+Johnson & Johnson --yes
+cornerstones -->yes
+------
+Google --yes
+Amazon --yes
+Apple --yes
+Nestle  --yes
+Tata Consultancy Services (TCS) --yes
+Accenture --yes
+Cognizant --yes
+Infosys --yes
+American Express --yes
+PwC --yes
+Ferrari --yes
+General Electric
+Deutsche Bank 
+Unilever
+Procter & Gamble --yes
+service now --yes

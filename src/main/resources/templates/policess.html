@@ -15,7 +15,15 @@
                 <li><a href="/api/home">Home</a></li>
                 <li><a href="/api/policies">Insurance Plans</a></li>
                 <li><a href="/api/claims">Claims</a></li>
-                <li><a href="/api/login1">Login</a></li>
+                <li th:if="${session.userEmail == null}">
+				    <a th:href="@{/api/login1}">Login</a>
+				</li>
+
+				<li th:if="${session.userEmail != null}">
+				    <form th:action="@{/api/logout}" method="post">
+				        <button type="submit">Logout</button>
+				    </form>
+				</li>
             </ul>
             </nav>
         </div>
