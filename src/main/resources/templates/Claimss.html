@@ -78,7 +78,7 @@
             </div>
             <div>
               <label class="block text-sm font-medium mb-1">Date of Admission</label>
-              <input type="date" name="admissionDate" id="admissionDate" required class="w-full p-2 border rounded-lg">
+              <input type="date" name="dateOfAdmission" id="dateOfAdmission" required class="w-full p-2 border rounded-lg">
             </div>
           </div>
 
@@ -167,33 +167,33 @@
         </div>
       </div>
 
-      <form id="family-claim-form" class="bg-white rounded-lg shadow-lg p-8">
+      <form id="family-claim-form" class="bg-white rounded-lg shadow-lg p-8 "th:action="@{/api/submit1}" method="post" enctype="multipart/form-data">
         <h3 class="text-2xl font-bold mb-6">Family Claim Form</h3>
         <div class="space-y-6">
           <div class="grid md:grid-cols-2 gap-6">
             <div>
               <label class="block text-sm font-medium mb-1">Claim ID</label>
-              <input type="text" name="policyNumber" required class="w-full p-2 border rounded-lg">
+              <input type="text" name="claimId" id="claimId" required class="w-full p-2 border rounded-lg">
             </div>
             <div>
               <label class="block text-sm font-medium mb-1">Primary Insured Name</label>
-              <input type="text" name="primaryInsuredName" required class="w-full p-2 border rounded-lg">
+              <input type="text" name="primaryInsuredName" id="primaryInsuredName" required class="w-full p-2 border rounded-lg">
             </div>
           </div>
 
           <div class="grid md:grid-cols-2 gap-6">
             <div>
               <label class="block text-sm font-medium mb-1">Patient Name</label>
-              <input type="text" name="patientName" required class="w-full p-2 border rounded-lg">
+              <input type="text" name="patientName"  id="patientName" required class="w-full p-2 border rounded-lg">
             </div>
             <div>
               <label class="block text-sm font-medium mb-1">Relationship with Primary Insured</label>
-              <select name="relationship" required class="w-full p-2 border rounded-lg">
+              <select id="relationPrimaryInsured" name="relationPrimaryInsured" required class="w-full p-2 border rounded-lg">
                 <option value="">Select Relationship</option>
-                <option value="spouse">Spouse</option>
-                <option value="child">Child</option>
-                <option value="parent">Parent</option>
-                <option value="parent-in-law">Parent-in-law</option>
+                <option value=SPOUSE>Spouse</option>
+                <option value="CHILD">Child</option>
+                <option value="PARENT">Parent</option>
+                <option value="PARENT_IN_LAW">Parent-in-law</option>
               </select>
             </div>
           </div>
@@ -201,22 +201,22 @@
           <div class="grid md:grid-cols-2 gap-6">
             <div>
               <label class="block text-sm font-medium mb-1">Hospital Name</label>
-              <input type="text" name="hospitalName" required class="w-full p-2 border rounded-lg">
+              <input type="text" name="hospitalName" id="hospitalName" required class="w-full p-2 border rounded-lg">
             </div>
             <div>
               <label class="block text-sm font-medium mb-1">Date of Admission</label>
-              <input type="date" name="admissionDate" required class="w-full p-2 border rounded-lg">
+              <input type="date" name="dateOfAdmission" id="dateOfAdmission" required class="w-full p-2 border rounded-lg">
             </div>
           </div>
 
           <div>
             <label class="block text-sm font-medium mb-1">Claim Amount (₹)</label>
-            <input type="number" name="claimAmount" required class="w-full p-2 border rounded-lg">
+            <input type="number" name="claimAmount" id="claimAmount" required class="w-full p-2 border rounded-lg">
           </div>
 
           <div>
             <label class="block text-sm font-medium mb-1">Diagnosis/Ailment</label>
-            <textarea name="diagnosis" required class="w-full p-2 border rounded-lg h-24"></textarea>
+            <textarea name="diagnosis" id="diagnosis" required class="w-full p-2 border rounded-lg h-24"></textarea>
           </div>
 
           <div class="space-y-4">
@@ -225,8 +225,8 @@
               <label class="block text-sm font-medium mb-1">Treatment Type</label>
               <select name="treatmentType" required class="w-full p-2 border rounded-lg">
                 <option value="">Select Treatment Type</option>
-                <option value="IP">Inpatient</option>
-                <option value="OP">Outpatient</option>
+                <option value="INPATIENT">InPatient</option>
+                <option value="OUTPATIENT">OutPatient</option>
               </select>
             </div>
           

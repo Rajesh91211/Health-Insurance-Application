@@ -19,6 +19,7 @@ public class IndividualClaimService
         return individualClaimRepository.save(claim);
     }
     
+    //get details by claim id
     public IndividualClaim getClaimById(String claimId) {
         return individualClaimRepository.findById(claimId).orElse(null);
     }
