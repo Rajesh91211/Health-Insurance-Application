@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title>Insurance Management Dashboard</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .navbar.sticky-top {
+            position: -webkit-sticky; /* For Safari */
+            position: sticky;
+            top: 0;
+            z-index: 1020; /* Ensures the navbar stays on top of other content */
+        }
+
+        .sidebar {
+            height: 100vh;
+            position: -webkit-sticky; /* For Safari */
+            position: sticky;
+            top: 56px; /* Height of the navbar */
+            background-color: #ffffff;
+            border-right: 1px solid #ddd;
+        }
+
+        .sidebar .nav-link {
+            padding: 10px 15px;
+        }
+
+        .main-content {
+            max-height: 100vh;
+            overflow-y: scroll; /* Make the main content scrollable */
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <!--<a class="navbar-brand" href="/">
+                <img th:src="@{/images/logo.png}" src="../static/images/logo.png" width="auto" height="40"
+                     class="d-inline-block align-top" alt="Company Logo" />
+            </a> -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto"></ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/}" href="#" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/policies}" href="#">Policies</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/claims}" href="#">Claims</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/payments}" href="#">Payments</a>
+                    </li>
+                    <li class="nav-item active" th:if="${session.email == null}">
+                        <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}">Login</a>  
+                    </li>
+                    <li class="nav-item active" th:if="${session.email != null}">
+                        <a class="nav-link" th:href="@{/logout}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-sm-3 sidebar">
+                <nav class="nav flex-column">
+                    <a class="nav-link active" th:href="@{/dashboard}">Dashboard</a>
+                    <a class="nav-link" th:href="@{/policies}">My Policies</a>
+                    <a class="nav-link" th:href="@{/claims}">Claims</a>
+                    <a class="nav-link" th:href="@{/payments}">Payments</a>
+                    <a class="nav-link" th:href="@{/support}">Support</a>
+                    <a class="nav-link" th:href="@{/premium}">Premium Services</a>
+                </nav>
+            </div>
+            
+            <!-- Main Dashboard Area -->
+            <div class="col-sm-9 main-content">
+                <!-- Profile Card -->
+                <div class="card">
+                    <div class="card-header">
+                        My Profile
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${user.fullname}">User Name</h5>
+                        <p class="card-text">Policy Number: <span th:text="${user.policyNumber}">12345</span></p>
+                        <p class="card-text">Contact Information: <span th:text="${user.contactInfo}">email@example.com</span></p>
+                    </div>
+                </div>
+
+                 Policy Details Card 
+                <div class="card">
+                    <div class="card-header">
+                        Policy Details
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Current Plan: <span th:text="${user.planType}">Premium</span></h5>
+                        <p class="card-text">Coverage: <span th:text="${user.coverageDetails}">Hospitalization, Outpatient, Maternity</span></p>
+                        <p class="card-text">Expiry Date: <span th:text="${user.expiryDate}">2025-12-31</span></p>
+                        <a th:href="@{/policies/details}" class="btn btn-primary">View All Policy Documents</a>
+                    </div>
+                </div>
+				
+                <!-- Claims Summary Card -->
+                <div class="card">
+                    <div class="card-header">
+                        Claims Summary
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Recent Claims: <span th:text="${claims.recent}">5</span></p>
+                        <p class="card-text">Approved: <span th:text="${claims.approved}">3</span></p>
+                        <p class="card-text">Pending: <span th:text="${claims.pending}">1</span></p>
+                        <p class="card-text">Rejected: <span th:text="${claims.rejected}">1</span></p>
+                        <a th:href="@{/claims/history}" class="btn btn-primary">View Claim History</a>
+                    </div>
+                </div>
+				
+
+                <!-- Payment History Card -->
+                <div class="card">
+                    <div class="card-header">
+                        Payment History
+                    </div>
+					
+                   <div class="card-body">
+                        <p class="card-text">Recent Payments: <span th:text="${payments.recent}">₹15000</span></p>
+                        <p class="card-text">Next Due Date: <span th:text="${payments.nextDue}">2025-10-15</span></p>
+                        <a th:href="@{/payments/history}" class="btn btn-primary">View Payment History</a>
+                    </div>
+					
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap and Font Awesome Scripts -->
+    <!--<div th:replace="~{fragments/bootstrap :: bootstrap}"></div> -->
+</body>
+</html>

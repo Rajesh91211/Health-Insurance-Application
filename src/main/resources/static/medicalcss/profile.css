@@ -1,0 +1,33 @@
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .navbar.sticky-top {
+            position: -webkit-sticky; /* For Safari */
+            position: sticky;
+            top: 0;
+            z-index: 1020; /* Ensures the navbar stays on top of other content */
+        }
+
+        .sidebar {
+            height: 100vh;
+            position: -webkit-sticky; /* For Safari */
+            position: sticky;
+            top: 56px; /* Height of the navbar */
+            background-color: #ffffff;
+            border-right: 1px solid #ddd;
+        }
+
+        .sidebar .nav-link {
+            padding: 10px 15px;
+        }
+
+        .main-content {
+            max-height: 100vh;
+            overflow-y: scroll; /* Make the main content scrollable */
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }

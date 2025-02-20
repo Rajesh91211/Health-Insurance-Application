@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Individual Health Insurance</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/medicalcss/individual.css}">
+</head>
+<body class="min-h-screen bg-gray-50">
+  <header class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-6">
+      <div class="flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+        <h1 class="text-2xl font-bold text-gray-900">Individual Health Insurance</h1>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <!-- Plans Section -->
+    <div id="plans-section">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4">Choose Your Perfect Plan</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Secure your health with our comprehensive individual insurance plans.
+          Each plan is tailored to provide optimal coverage for your personal healthcare needs.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8" id="plans-container">
+        <!-- Plans will be inserted here by JavaScript -->
+      </div>
+    </div>
+
+    <!-- Customer Form Section -->
+    <div id="customer-form-section" class="hidden">
+      <div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold mb-6">Personal Information</h2>
+        <div class="mb-6 p-4 bg-blue-50 rounded-lg" id="selected-plan-summary"></div>
+        <form id="customer-form" class="space-y-4" onsubmit="handleCustomerSubmit(event)">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium mb-1">First Name</label>
+              <input type="text" name="firstName" required class="w-full p-2 border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Last Name</label>
+              <input type="text" name="lastName" required class="w-full p-2 border rounded-lg">
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium mb-1">Age</label>
+              <input type="tel" name="age" required class="w-full p-2 border rounded-lg">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium mb-1">Email</label>
+              <input type="email" name="email" required class="w-full p-2 border rounded-lg">
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium mb-1">Date of Birth</label>
+              <input type="date" name="dateOfBirth" required class="w-full p-2 border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Mobile Number</label>
+              <input type="tel" name="phone" pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number" required class="w-full p-2 border rounded-lg">
+            </div>
+           
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Address</label>
+            <input type="text" name="address" required class="w-full p-2 border rounded-lg">
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <div>
+              <label class="block text-sm font-medium mb-1">City</label>
+              <input type="text" name="city" required class="w-full p-2 border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">State</label>
+              <input type="text" name="state" required class="w-full p-2 border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">PIN Code</label>
+              <input type="text" name="pinCode" pattern="[0-9]{6}" title="Please enter a valid 6-digit PIN code" required class="w-full p-2 border rounded-lg">
+            </div>
+          </div>
+          
+       <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+        Proceed to Payment
+    </button>
+</form>
+    
+      </div>
+    </div>
+
+    <!-- Payment Section -->
+    <div id="payment-section" class="hidden">
+      <div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold mb-6">Payment Information</h2>
+        <div class="mb-6 p-4 bg-blue-50 rounded-lg" id="payment-summary"></div>
+        
+        
+        <div class="payment-options">
+                    <h3>Select Payment Method</h3>
+                    <label>
+                        <input type="radio" name="paymentMethod" value="creditcard" id="creditcard"> Credit Card
+                    </label>
+                    <label>
+                        <input type="radio" name="paymentMethod" value="debitcard" id="debitcard"> Debit Card
+                    </label>
+                    <label>
+                        <input type="radio" name="paymentMethod" value="upi" id="upi"> UPI
+                    </label>
+                </div>
+
+                <div id="detailsContainer"></div>
+
+                 <button id="payNowButton" onclick="processPayment()" class="btn" style="display: none;">Pay Now</button>  
+        
+        
+        
+    <!--      <form id="payment-form" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Card Number</label>
+            <div class="relative">
+              <input
+                type="text"
+                pattern="[0-9]{16}"
+                placeholder="1234 5678 9012 3456"
+                class="w-full p-2 pl-10 border rounded-lg"
+                required
+              >
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-2.5 w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                <line x1="1" y1="10" x2="23" y2="10"></line>
+              </svg>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium mb-1">Expiry Date</label>
+              <input
+                type="text"
+                placeholder="MM/YY"
+                pattern="(0[1-9]|1[0-2])\/([0-9]{2})"
+                class="w-full p-2 border rounded-lg"
+                required
+              >
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">CVV</label>
+              <input
+                type="password"
+                placeholder="•••"
+                pattern="[0-9]{3}"
+                maxlength="3"
+                class="w-full p-2 border rounded-lg"
+                required
+              >
+            </div>
+          </div>
+          <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+            Pay Now
+          </button>
+        </form>        -->
+        
+        
+        
+      </div>
+    </div>
+
+    <!-- Success Section -->
+    <div id="success-section" class="hidden">
+      <div class="max-w-md mx-auto text-center p-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-green-500 mx-auto mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <h2 class="text-2xl font-bold mb-4">Payment Successful!</h2>
+        <p class="text-gray-600" id="success-message"></p>
+      </div>
+    </div>
+  </main>
+
+  <script th:src="@{/Script/individual.js}"></script>
+</body>
+</html>

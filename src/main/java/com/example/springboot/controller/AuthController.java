@@ -42,6 +42,15 @@ public class AuthController {
         return "Claimss"; // This should match the Thymeleaf file name (registration.html)
     }
     
+    @GetMapping("/profile")
+    public String getProfile(Model model,HttpSession session) {
+    model.addAttribute("user",new Register());
+//    model.addAttribute("session",new HttpSession());
+//    session.setAttribute(null, session)
+        return "profilee";
+    }
+    
+    
     @GetMapping("/home")  
     public String showAboutPage(Model model) {
         model.addAttribute("message", "Welcome to the about page!");
