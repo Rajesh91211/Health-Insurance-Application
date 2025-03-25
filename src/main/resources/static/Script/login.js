@@ -36,7 +36,7 @@
 			    }) // Get JSON response from the backend
             .then(data => {
                 alert(data.message); // Display the message (success or error)
-                if (data.message === 'Login successful') {
+                if (data.message === 'Login successful check verification mail') {
                     // Redirect, set a session, etc. (Do something after successful login)
                     window.location.href = '/api/home'; // Example: Redirect to a dashboard page
                 }
@@ -78,10 +78,10 @@
 				console.log("Parsed Data:", data);
 				console.log(data);
                 alert(data.message);
-                if (data.message === 'Registration successful!,  Please log in') 
+                if (data.message === 'Registration successful!, Check email for verfication..') 
 					{
                     // Redirect, clear the form, etc.
-					window.location.href = "/login1";
+					window.location.href = "/api/login1";
                     //loginForm.style.display = "block"; // Switch to login form
                    // registerForm.style.display = "none";
                    // registerForm.reset(); // Clear the form fields

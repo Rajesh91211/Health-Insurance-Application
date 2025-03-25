@@ -29,19 +29,4 @@ public boolean existsByEmail(String email) {
 	return registerRepository.existsByEmail(email);
 }
 
-//@Autowired
-//private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-//public String registerUser(Register register) {
-//    if (registerRepository.findByEmail(register.getEmail())!= null) {
-//        return "Email already exists"; // Indicate failure
-//    }
-//
-//    // Hash the password before saving to the database
-//    String hashedPassword = bCryptPasswordEncoder.encode(register.getPassword());
-//    register.setPassword(hashedPassword);
-//
-//    registerRepository.save(register);
-//    return "Registration successful"; // Indicate success
-//}
 }
